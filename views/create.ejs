@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<%- include('./partials/header.ejs') %>
+
+<body>
+    <div>
+        <div class="bookinput">
+            <form action="/create" method="post">
+                <h2>Book Name:</h2>
+                <input id="bookname" name="bookname" type="text">
+                <h2>Description:</h2>
+                <input id="description" name="description" type="text">
+                <h2>Reference :</h2>
+                <input id="reference" name="reference" type="text">
+                <button class="btn"  type="submit">Submit</button>
+ 
+            </form>
+        </div>
+    </div>
+</body>
+</html>

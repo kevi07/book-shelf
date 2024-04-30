@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include('./partials/header.ejs') %>
+<body>
+
+    <h3 class="available" style="font-style: italic;">Available Bookies :</h3>
+
+    <div class="whole">
+        <div class="shelf" id="shelfid">
+            <% if (books.length > 0) { %>
+                <% books.forEach(book => { %>
+            <div class="parent-container">
+                <div class="contents">
+                    <div class="book">
+                        <h3 class="bookname"><%= book.bookname %></h3>
+                        <p class="description"><%= book.description %></p>
+                    </div>       
+                </div>
+                <div class="container">
+                    <!-- <div class="edit"></div> -->
+                    <a class="delete" id="deleteButton" data-doc="<%= book._id %>"></a>
+                </div>       
+            </div>
+            <% }) %>
+                    <% } else { %>
+                        <p>No books available.</p>
+                    <% } %>
+        </div><br>
+    </div>
+    <!-- <button id="button">Add Divs</button><br> -->
+    
+
+    <%- include('./partials/footer.ejs') %>
+    <script src="script/script.js"></script>
+    <script>
+        const deleteButton = document.getElementById('deleteButton');
+        deleteButton.addEventListener('click', (e) => {
+            let docId; 
+            const end =`/main/${deleteButton.dataset.doc}`;
+            fetch(end,{method : 'DELETE'})
+            // .then(() => )
+            .then((response) => 
+                response.json()
+            )
+            .then((data)=>{
+                window.location.href = data.redirect;
+            } )
+            .catch(err => console.log(err));
+        })
+
+    </script>
+</body>
+
+</html>
