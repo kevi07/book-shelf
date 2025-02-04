@@ -2,8 +2,8 @@ const express = require('express');
 const mongoose = require('mongoose');
 const Book = require('./models/db');
 
-
 const app = express();
+const port = process.env.PORT || 5000;
 
 
 const dbURI = 'mongodb+srv://kevin:FBMxSrVjq3C64BHO@cluster0.hdn3h0e.mongodb.net/bookshelf?retryWrites=true&w=majority&appName=Cluster0';
@@ -66,4 +66,4 @@ app.set('view engine', 'ejs')
 
 app.use(express.static('public'));
 
-app.listen(5000);
+app.listen(port);
